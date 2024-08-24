@@ -39,7 +39,7 @@
           bind:value={newTitle}
         />
         <button 
-          class="text-neutral-400 justify-self-end align-self-start text-sm pl-2 pr-2 -translate-y-5 translate-x-4"
+          class="text-neutral-400 justify-self-end align-self-start text-sm pl-2 pr-2 -translate-y-5 translate-x-4 active:-translate-y-4"
           on:click={ () => {
             addTodo(newTitle, newDescription)
             newTitle = ""

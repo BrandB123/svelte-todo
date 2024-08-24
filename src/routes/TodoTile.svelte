@@ -13,7 +13,7 @@
       {title}
     </h3>
     <button 
-      class="text-sm pl-2 pr-2 absolute right-2 -translate-y-4 translate-x-1"
+      class="text-sm pl-2 pr-2 absolute right-2 -translate-y-4 translate-x-1 hover:font-medium active:-translate-y-3"
       
       on:click={() => {
         deleteTodo(title)
