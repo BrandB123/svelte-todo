@@ -31,7 +31,7 @@
       {/each}
     {/if}
 
-    <div class="w-full min-w-80 md:w-4/5 md:max-w-4xl bg-slate-100 border border-slate-300 rounded-xl p-5 grid grid-cols-2 grid-rows-2 gap-y-2">
+    <div class="w-full min-w-72 md:w-4/5 md:max-w-4xl bg-slate-100 border border-slate-300 rounded-xl p-5 grid grid-cols-2 grid-rows-2 gap-y-2">
         <input 
           placeholder="Title" 
           required 
