@@ -1,6 +1,5 @@
 <script lang="ts">
     import TodoTile from './TodoTile.svelte';
-    import { tempData } from '$lib/tempData';
     import { onMount } from 'svelte';
     import { addTodo } from '$lib/addTodo'
 
@@ -23,19 +22,16 @@
             }
         }
     })
-
-    /*
-
-
-    */
 </script>
 
 <div class="flex flex-col items-center w-full p-8 gap-y-2">
-    {#each todosList as todoItem}
-      <TodoTile title={todoItem.title} description={todoItem.description} completed={todoItem.completed} todosList={todosList}/>
-    {/each}
+    {#if todosList !== null}
+      {#each todosList as todoItem}
+          <TodoTile title={todoItem.title} description={todoItem.description} completed={todoItem.completed} bind:todosList={todosList}/>
+      {/each}
+    {/if}
 
-    <div class="w-[800px] bg-slate-100 border border-slate-300 rounded-xl p-5 grid grid-cols-2 grid-rows-2 gap-y-2">
+    <div class="w-full min-w-80 md:w-4/5 md:max-w-4xl bg-slate-100 border border-slate-300 rounded-xl p-5 grid grid-cols-2 grid-rows-2 gap-y-2">
         <input 
           placeholder="Title" 
           required 
@@ -43,7 +39,7 @@
           bind:value={newTitle}
         />
         <button 
-          class="text-neutral-400 justify-self-end align-self-start text-sm pl-2 pr-2 -translate-y-4 translate-x-4"
+          class="text-neutral-400 justify-self-end align-self-start text-sm pl-2 pr-2 -translate-y-5 translate-x-4"
           on:click={ () => {
             addTodo(newTitle, newDescription)
             newTitle = ""
