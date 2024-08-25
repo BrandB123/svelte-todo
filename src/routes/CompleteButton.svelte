@@ -8,9 +8,9 @@
 
     let buttonColor: string;
     if (completed){
-        buttonColor = 'bg-sky-400'
+        buttonColor = 'bg-sky-400 dark:bg-sky-900'
     } else {
-        buttonColor = 'border border-slate-400';
+        buttonColor = 'border border-slate-400 dark:border-slate-200';
     }
     
 </script>

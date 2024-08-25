@@ -1,6 +1,6 @@
 <script lang="ts">
   import TodoTile from '../TodoTile.svelte';
-  import { tempData } from '$lib/tempData';
+  // import { tempData } from '$lib/tempData';
   import { onMount } from 'svelte';
 
 
@@ -13,11 +13,11 @@
 
   onMount(() => {
       if (localStorage.length > 0){
-          if (todosList !== null){
+          // if (todosList !== null){
               // localStorage.clear();
               todosList = (JSON.parse(localStorage.getItem("todos")));
               console.log(todosList);
-          }
+          // }
       }
   })
 </script>
