@@ -1,10 +1,19 @@
 <script lang='ts'>
    import "../app.css";
    import { onMount } from 'svelte';
+   import { theme } from '../lib/stores/darkMode'
 
-   let darkMode = false;
-   let appearance: "Light" | "Dark"; 
-   //implement toggle for dark mode here
+   $: colorScheme = $theme;
+
+   onMount(() => {
+      if (colorScheme === "dark"){
+         document.body.classList.add("dark")
+         console.log("Color Scheme: " + colorScheme)
+         let savedTheme = JSON.parse(localStorage.getItem("theme"));
+         console.log("Saved Theme: " + savedTheme);
+         console.log(localStorage)
+      }
+   });
    
 </script>
 
@@ -23,11 +32,13 @@
     >Completed Todo Items</a>
     <select 
       class="bg-gray-600 dark:bg-slate-950 text-sm focus:outline-none focus:border-transparent place-self-end"
-      bind:value={appearance}
-     >
-     <option>Device</option> 
-     <option>Light</option>
-      <option>Dark</option>
+      bind:value={colorScheme}
+      on:change={() => {
+         theme.set(colorScheme)
+        }}
+     > 
+     <option>light</option>
+      <option>dark</option>
     </select>
 </nav>
   

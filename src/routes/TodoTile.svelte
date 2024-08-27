@@ -4,8 +4,8 @@
     import { deleteTodo } from "$lib/deleteTodo";
 
     export let todosList: TodoObject[] = [];
-    export let title = "Todo Item 1";
-    export let description = "This is the description for the first item. Blah blah blah. We will have actual data here later.";
+    export let title = "Title";
+    export let description = "";
     export let completed = true;
 </script>
 

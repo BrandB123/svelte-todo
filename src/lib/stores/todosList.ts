@@ -9,6 +9,5 @@ export const todosList = writable(localStorageTodos);
 todosList.subscribe((value) => {
   if (typeof window !== 'undefined'){
     localStorage.setItem('todosList', JSON.stringify(value));
-    // localStorage.setItem('todosList', []);
   }
 });

@@ -4,8 +4,6 @@
     import { addTodo } from '$lib/addTodo'
     import type { TodoObject } from '$lib/types';
 
-    export let appearance: "Light" | "Dark";
-
     let todosList: TodoObject[] = [];
 
     let newTitle: string;
@@ -16,10 +14,8 @@
             // if (todosList !== null){
                 // localStorage.clear();
                 todosList = (JSON.parse(localStorage.getItem("todos")));
-                console.log(todosList);
             // }
         }
-        console.log("Color mode: " + appearance)
     })
 </script>
 
