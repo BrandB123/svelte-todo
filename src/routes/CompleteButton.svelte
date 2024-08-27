@@ -1,10 +1,9 @@
 <script lang='ts'>
-    import { markComplete } from "$lib/markComplete";
-    import type { TodoObject } from '$lib/types';
-	  import TodoTile from "./TodoTile.svelte";
+    import { todosList } from '$lib/stores/todosList'
+	// import TodoTile from '../TodoTile.svelte';
+    // import type { TodoObject } from '$lib/types';    
     
-    
-    export let todosList: TodoObject= [];
+    // export let todosList = [];
     export let title = "";
     export let completed = false; 
 
@@ -20,9 +19,18 @@
 <button 
   class="{buttonColor} rounded-full size-4 md:size-3 absolute top-1/2 left-2 -translate-y-2"
   on:click={() => {
-    markComplete(title)
-    todosList = (JSON.parse(localStorage.getItem("todos")));
-    console.log(todosList);
+    // markComplete(title)
+    let todoItems = $todosList;
+    let completeIndex;
+    todoItems.forEach((todoItem, index) => {
+        if (todoItem.title === title){
+            completeIndex = index;
+        }
+    });
+    todoItems[completeIndex].completed = todoItems[completeIndex].completed ? false : true;
+    todosList.set(todoItems);
+    // todosList = (JSON.parse(localStorage.getItem("todos")));
+    // console.log(todosList);
   }}
 >
 </button>
