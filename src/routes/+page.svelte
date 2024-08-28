@@ -2,10 +2,28 @@
     import { todosList } from '$lib/stores/todosList'
     import type { TodoObject } from '$lib/types';
     import TodoTile from './TodoTile.svelte'
+    import { MAXTODOITEMS } from '$lib/maxTodoItems';
 
     let todoItems: TodoObject[] = [];
     let newTitle: string;
     let newDescription: string;
+    export const MAXTODOS = 10;
+
+    function validateInput(title:string, todos:TodoObject[]){
+      if (title === undefined){ 
+        return 
+      } else {
+        const validString = title.trim() ? true : false;
+	      const spaceLeft = todos.length < MAXTODOITEMS ? true : false;
+        let uniqueInput = true;
+        todos.forEach((todo) => {
+	        if (todo.title === title){ uniqueInput = false }
+        })
+	    const validated = (validString && spaceLeft && uniqueInput)
+	    return {validated, validString, spaceLeft, uniqueInput}
+      }
+    }
+  
 
     $: todoItems = $todosList;
 </script>
@@ -26,9 +44,29 @@
         <button 
           class="text-neutral-400 justify-self-end align-self-start text-sm pl-2 pr-2 -translate-y-5 translate-x-4 active:-translate-y-4"
           on:click={ () => {
-            todosList.update(todos => [...todos, {title: newTitle, description: newDescription, completed: false }]);
-            newTitle = ""
-            newDescription = ""
+            const validation = validateInput(newTitle, todoItems)
+            if (validation === undefined) { return }
+            
+            if (validation.validated){
+                todosList.update(todos => [...todos, {title: newTitle, description: newDescription, completed: false }]);
+                newTitle = ""
+                newDescription = ""
+	          } else {
+		          if (!validation.validString){ 
+		            alert("Title must not be blank.")
+                newTitle = ""
+		            return 
+              } else if (!validation.spaceLeft){
+		            alert("You've reached the maximum number of todos.")
+                newTitle = ""
+                newDescription = ""
+		            return 
+		          } else if (!validation.uniqueInput){
+		            alert("Titles must be unique.")
+                newTitle = ""
+		            return  
+		          }
+            }
           }}
         >
           add

@@ -1,7 +1,5 @@
 import { writable } from 'svelte/store';
 
-type Theme = "Light" | "Dark"
-
 let savedTheme: string;
 
 if (typeof window !== 'undefined'){
@@ -16,6 +14,5 @@ export const theme = writable(localStorageTheme);
 theme.subscribe((value) => {
     if (typeof window !== 'undefined'){
       localStorage.setItem('theme', JSON.stringify(value));
-      // localStorage.setItem('theme', '');
     }
   });

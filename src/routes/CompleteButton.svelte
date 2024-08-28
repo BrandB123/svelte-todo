@@ -1,6 +1,7 @@
 <script lang='ts'>
     import { todosList } from '$lib/stores/todosList'   
-    
+    import { MAXTODOITEMS } from '$lib/maxTodoItems';
+
     export let title = "";
     export let completed = false; 
 
@@ -16,7 +17,7 @@
   class="{buttonColor} rounded-full size-4 md:size-3 absolute top-1/2 left-2 -translate-y-2"
   on:click={() => {
     let todoItems = $todosList;
-    let completeIndex = 11;
+    let completeIndex = MAXTODOITEMS;
     todoItems.forEach((todoItem, index) => {
         if (todoItem.title === title){
             completeIndex = index;

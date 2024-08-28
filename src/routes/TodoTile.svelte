@@ -1,6 +1,7 @@
 <script lang="ts">
     import { todosList } from '$lib/stores/todosList'
     import CompleteButton from './CompleteButton.svelte';
+    import { MAXTODOITEMS } from '$lib/maxTodoItems';
 
     export let title = "";
     export let description = "";
@@ -15,7 +16,7 @@
       class="text-sm dark:text-slate-300 pl-2 pr-2 absolute right-2 -translate-y-4 translate-x-1 hover:font-bold active:-translate-y-3"
       on:click={() => {
         let todoItems = $todosList; 
-        let deleteIndex = 11;
+        let deleteIndex = MAXTODOITEMS;
         todoItems.forEach((todoItem, index) => {
           if (todoItem.title === title){
             deleteIndex = index;
