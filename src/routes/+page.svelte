@@ -1,13 +1,15 @@
 <script lang="ts">
+    import { fade, fly } from 'svelte/transition';
     import { todosList } from '$lib/stores/todosList'
     import type { TodoObject } from '$lib/types';
     import TodoTile from './TodoTile.svelte'
     import { MAXTODOITEMS } from '$lib/maxTodoItems';
 
     let todoItems: TodoObject[] = [];
-    let newTitle: string;
-    let newDescription: string;
-    export const MAXTODOS = 10;
+    let newTitle: string = "";
+    let newDescription: string = "";
+    let alertVisibility = "invisible";
+    let alertMessage = ""
 
     function validateInput(title:string, todos:TodoObject[]){
       if (title === undefined){ 
@@ -48,21 +50,25 @@
             if (validation === undefined) { return }
             
             if (validation.validated){
+                alertVisibility = "invisible"
                 todosList.update(todos => [...todos, {title: newTitle, description: newDescription, completed: false }]);
                 newTitle = ""
                 newDescription = ""
 	          } else {
 		          if (!validation.validString){ 
-		            alert("Title must not be blank.")
+		            alertMessage = "Title must not be blank. Please add a title in order to submit."
+                alertVisibility = "visible"
                 newTitle = ""
 		            return 
               } else if (!validation.spaceLeft){
-		            alert("You've reached the maximum number of todos.")
+		            alertMessage = "You've reached the maximum number of todos."
+                alertVisibility = "visible"
                 newTitle = ""
                 newDescription = ""
 		            return 
 		          } else if (!validation.uniqueInput){
-		            alert("Titles must be unique.")
+		            alertMessage = "Titles cannot match the title of another todo item."
+                alertVisibility = "visible"
                 newTitle = ""
 		            return  
 		          }
@@ -77,5 +83,20 @@
           bind:value = {newDescription}
           /> 
     </div>
+
+    {#if alertVisibility === "visible"}
+      <div 
+        class="{alertVisibility} bg-slate-300 dark:bg-slate-600 border border-slate-600 width-1/2 flex justify-center items-center fixed inset-1/3 rounded-xl"
+        in:fly={{ x: 800, duration: 1000 }} out:fade
+        >
+        <p class="text-neutral-800  dark:text-slate-100 text-lg w-2/3 text-center">{alertMessage}</p>
+        <button 
+        class=" text-md dark:text-slate-300 pl-2 pr-2 absolute right-2 -translate-y-28 translate-x-1 hover:font-bold active:scale-90"
+        on:click={() => { alertVisibility = "invisible"}}
+        >
+          x 
+        </button>
+      </div>
+    {/if}
 </div>
 
