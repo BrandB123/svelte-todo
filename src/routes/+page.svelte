@@ -20,7 +20,7 @@
     <div class="w-full min-w-72 md:w-4/5 md:max-w-4xl 2xl:w-4/5 2xl:max-w-7xl bg-slate-100 dark:bg-gray-800 border border-slate-300 dark:border-slate-600 rounded-xl p-5 grid grid-cols-2 grid-rows-2 gap-y-2">
         <input 
           placeholder="Title"
-          class="bg-slate-100 dark:bg-gray-800 text-neutral-400 border border-transparent placeholder-shown:border-slate-300 dark:placeholder-shown:border-slate-600 rounded-lg pl-2 w-1/2 focus:outline-none focus:border-transparent"
+          class="bg-slate-100 dark:bg-gray-800 text-neutral-400 border border-transparent placeholder-shown:border-slate-300 dark:placeholder-shown:border-slate-600 rounded-lg pl-2 w-1/2 min-w-48 focus:outline-none focus:border-transparent"
           bind:value={newTitle}
         />
         <button 
