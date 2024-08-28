@@ -8,7 +8,7 @@
     export let completed = false;
 </script>
 
-<div class=" relative w-full min-w-72 md:w-screen md:max-w-4xl 2xl:w-4/5 2xl:max-w-7xl bg-white dark:bg-slate-900 border border-slate-400 dark:border-slate-600 rounded-xl p-5 flex flex-col gap-y-2">
+<div class=" relative w-full min-w-72 md:w-4/5 md:max-w-4xl 2xl:max-w-7xl bg-white dark:bg-slate-900 border border-slate-400 dark:border-slate-600 rounded-xl p-5 flex flex-col gap-y-2">
     <h3 class="rounded-lg pl-2 w-1/2 font-bold dark:text-slate-300">
       {title}
     </h3>
