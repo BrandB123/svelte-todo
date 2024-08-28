@@ -6,8 +6,8 @@
     import { MAXTODOITEMS } from '$lib/maxTodoItems';
 
     let todoItems: TodoObject[] = [];
-    let newTitle: string = "";
-    let newDescription: string = "";
+    let newTitle = "";
+    let newDescription = "";
     let alertVisibility = "invisible";
     let alertMessage = ""
 
@@ -26,7 +26,6 @@
       }
     }
   
-
     $: todoItems = $todosList;
 </script>
 
