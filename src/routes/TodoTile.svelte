@@ -1,11 +1,9 @@
 <script lang="ts">
     import { todosList } from '$lib/stores/todosList'
-    import CompletedButton from './CompletedButton.svelte';
-    // import type { TodoObject } from '$lib/types';
-    // import CompleteButton from "./CompleteButton.svelte";
+    import CompleteButton from './CompleteButton.svelte';
 
-    export let title = "Todo Item 1";
-    export let description = "This is the description for the first item. Blah blah blah. We will have actual data here later.";
+    export let title = "";
+    export let description = "";
     export let completed = false;
 </script>
 
@@ -15,10 +13,9 @@
     </h3>
     <button 
       class="text-sm dark:text-slate-300 pl-2 pr-2 absolute right-2 -translate-y-4 translate-x-1 hover:font-bold active:-translate-y-3"
-      
       on:click={() => {
-        let todoItems = $todosList;
-        let deleteIndex;
+        let todoItems = $todosList; 
+        let deleteIndex = 11;
         todoItems.forEach((todoItem, index) => {
           if (todoItem.title === title){
             deleteIndex = index;
@@ -33,5 +30,5 @@
     <p class="dark:text-slate-300 pt-1 pb-1 pl-2 rounded-lg col-span-2 row-span-1"> 
       {description}
     </p>
-    <StoreCompletedButton title={title} completed={completed} />
+    <CompleteButton title={title} completed={completed} />
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { todosList } from '$lib/stores/todosList'
     import type { TodoObject } from '$lib/types';
-    import TodoTile from './TodoTile.svelte'
+    import TodoTile from '../TodoTile.svelte'
 
     let todoItems: TodoObject[] = [];
 
@@ -12,7 +12,7 @@
     {#if todoItems === $todosList}
       {#each todoItems as todoItem}
         {#if todoItem.completed !== true}
-          <StoredTodoTile title={todoItem.title} description={todoItem.description} completed={todoItem.completed}/>
+          <TodoTile title={todoItem.title} description={todoItem.description} completed={todoItem.completed}/>
         {/if}
       {/each}
     {/if}
