@@ -1,38 +1,31 @@
-# create-svelte
+# Sveltekit To Do App
+This to do app is built with SvelteKit, TypeScript, and TailwindCSS and is hosted through Vercel. It demonstrates the following concepts:
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Live Preview:
+https://svelte-todo-eosin-omega.vercel.app/
 
-## Creating a project
+## Svelte/SvelteKit
+ - Svelte components
+ - Reactive assignments and statements
+ - Props management
+ - Logical HTML operations (#if and #each blocks)
+ - DOM events and handlers
+ - Binding
+ - Lifecycle events
+ - Stores
+ - Transitions
+ - Routing
 
-If you're seeing this, you've probably already done this step. Congrats!
+## TypeScript
+ - Type Inference
+ - Type Annotations
+ - Function parameter/return type annotations
+ - Interfaces
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## TailwindCSS
+- Utility classes
+- States: Hover, Active, etc.
+- Responsive Design
+- Dark mode
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Favicon created with imagine.art
