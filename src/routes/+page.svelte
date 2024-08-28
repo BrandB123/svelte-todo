@@ -90,7 +90,7 @@
         >
         <p class="text-neutral-800  dark:text-slate-100 text-lg w-2/3 text-center">{alertMessage}</p>
         <button 
-        class=" text-md dark:text-slate-300 pl-2 pr-2 absolute right-2 -translate-y-28 translate-x-1 hover:font-bold active:scale-90"
+        class=" text-md dark:text-slate-300 pl-2 pr-2 absolute top-1 right-1 hover:font-bold active:scale-90"
         on:click={() => { alertVisibility = "invisible"}}
         >
           x 
